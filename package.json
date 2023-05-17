@@ -1,6 +1,6 @@
 {
-  "name": "blep",
-  "version": "0.0.1",
+  "name": "@sfdl/blep",
+  "version": "0.1.2",
   "description": "A small utility toolkit for DOM components",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
