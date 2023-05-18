@@ -1,4 +1,4 @@
-#Blep
+# Blep
 
 Blep is a little toolkit for managing bootstrapping components into the DOM. It is ultra-lightweight, feature-sparse and opinion-free (just like the author). Blep will help you get your encapsulated code into the DOM tree but will leave you there to get on with what you need to do. It is designed to let you hack stuff together with minimal effort.
 
