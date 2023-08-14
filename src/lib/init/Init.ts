@@ -1,7 +1,7 @@
 import { ComponentMap } from '../componentAPI/Register'
 
 export type Message = {
-  body: string
+  body: string | Record<string, unknown>
   type?: string
 }
 
