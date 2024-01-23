@@ -21,6 +21,7 @@ type ReceiverItem = {
 const Init = (
   map: ComponentMap,
   domList: NodeListOf<Element>,
+  development = false,
   typeAttributeName = 'data-component-type',
   dataAttributeName = 'data-component-data',
   configAttributeName = 'data-component-config'
@@ -56,7 +57,9 @@ const Init = (
 
       binding(props)
     } catch (e) {
-      console.log(e, 'error occurred when binding to DOM')
+      if (development) {
+        console.log(e, 'error occurred when binding to DOM')
+      }
     }
   })
 }
