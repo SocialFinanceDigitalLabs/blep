@@ -24,7 +24,7 @@ Blep can now be used to mount this block as a JS component. Blep components are 
 ```typescript
 // # TypeScript
 
-import {BindingProps} from '@sfdl/blep';
+import type {BindingProps} from '@sfdl/blep';
 
 const ExampleComponent = (props:BindingProps) => {
     // your component logic goes here
