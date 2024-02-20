@@ -2,16 +2,29 @@
 
 Blep is a little toolkit for managing bootstrapping components into the DOM. It is ultra-lightweight, feature-sparse and opinion-free (just like the author). Blep will help you get your encapsulated code into the DOM tree but will leave you there to get on with what you need to do. It is designed to let you hack stuff together with minimal effort.
 
+## Installation
+```
+# NPM
+npm install @sfdl/blep
+
+# Yarn
+yard add @sfdl/blep
+```
+
 ## Registration and hydration
 
 Blep works in the intersection between the static page markup and the attachment of DOM scripting. To make it work you first update your HTML to add an element which Blep can recognise:
 
-`<div data-component="true" data-component-type="examplecomponent"></div>`
+```html
+<div data-component="true" data-component-type="examplecomponent" />
+```
 
 Blep can now be used to mount this block as a JS component. Blep components are merely functions which receive a `Blep.BindingProps` object as their argument:
 
-```
-import {BindingProps} from @sfdl/blep;
+```typescript
+// # TypeScript
+
+import type {BindingProps} from '@sfdl/blep';
 
 const ExampleComponent = (props:BindingProps) => {
     // your component logic goes here
@@ -23,8 +36,10 @@ export default ExampleComponent;
 
 All that now remains is to register your component with Blep and hydrate it. Usually the best place to do this is in a top level JS function (perhaps an IIFE or a dom-ready event handler):
 
-```
-import ExampleComponent from './ExampleComponent.js'
+```typescript
+//# TypeScript
+
+import ExampleComponent from './ExampleComponent';
 import { register, getMap, init } from '@sfdl/blep';
 
 // get all the hydrateable elements on the page
@@ -51,8 +66,11 @@ Pretty much any way you like. Your component is essentially a function which pro
 
 I like to use the imperative approach but with a minor enhancement to use the element reference returned from the `render` function to build a recursive rendering loop:
 
-```
-import {BindingProps, render} from @sfdl/blep;
+```typescript
+// # TypeScript
+
+import {render} from '@sfdl/blep';
+import type {BindingProps} from '@sfdl/blep';
 
 const ExampleComponent = (props:BindingProps) => {
 
@@ -63,11 +81,11 @@ const ExampleComponent = (props:BindingProps) => {
         const date = new Date().getTime();
 
         const body = document.createElement('p');
-        body.innerHTML = date;
+        body.innerHTML = date.toString();
 
         element = render(element, body)
 
-        element.querySelector('p').addEventListener('click', () => {
+        element.querySelector('p')?.addEventListener('click', () => {
             doRender();
         })
 
