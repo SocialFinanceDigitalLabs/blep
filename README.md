@@ -69,7 +69,8 @@ I like to use the imperative approach but with a minor enhancement to use the el
 ```typescript
 // # TypeScript
 
-import {BindingProps, render} from '@sfdl/blep';
+import {render} from '@sfdl/blep';
+import type {BindingProps} from '@sfdl/blep';
 
 const ExampleComponent = (props:BindingProps) => {
 
@@ -80,7 +81,7 @@ const ExampleComponent = (props:BindingProps) => {
         const date = new Date().getTime();
 
         const body = document.createElement('p');
-        body.innerHTML = date;
+        body.innerHTML = date.toString();
 
         element = render(element, body)
 
